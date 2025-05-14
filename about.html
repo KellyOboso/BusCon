@@ -1,11 +1,19 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <script>
+        try {
+            if (localStorage.getItem('busconnect-dark-mode') === 'true') {
+                document.documentElement.classList.add('dark-mode');
+                document.body && document.body.classList.add('dark-mode');
+            }
+        } catch (e) {}
+    </script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>BusConnect - About Us</title>
-    <link rel="stylesheet" href="styles.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 <body>
     <aside class="sidebar">
@@ -20,13 +28,15 @@
             <li><a href="about.html" class="active"><i class="fas fa-info-circle"></i> <span class="nav-text">About</span></a></li>
             <li><a href="contact.html"><i class="fas fa-envelope"></i> <span class="nav-text">Contact</span></a></li>
         </ul>
-        <button class="dark-mode-toggle" id="darkModeToggle" aria-label="Toggle dark mode"><i class="fas fa-moon"></i></button>
+        <button class="dark-mode-toggle"   id="darkModeToggle" aria-label="Toggle dark mode"><i class="fas fa-info-circle"
+             class="fas fa-moon"></i></button>
         <div class="sidebar-bottom">
             <button class="collapse-btn" id="collapseSidebar" aria-label="Collapse sidebar">
                 <i class="fas fa-angle-double-left"></i>
             </button>
         </div>
     </aside>
+    <button class="hamburger" id="hamburgerBtn">&#9776;</button>
     <div class="main-content">
         <section class="about-section">
             <h2>About BusConnect</h2>
@@ -132,6 +142,29 @@
             </div>
         </footer>
     </div>
-    <script src="script.js"></script>
+    <script src="js/script.js"></script>
+    <script type="module">
+    // Import the functions you need from the SDKs you need
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/11.7.1/firebase-app.js";
+    import { getAnalytics } from "https://www.gstatic.com/firebasejs/11.7.1/firebase-analytics.js";
+    // TODO: Add SDKs for Firebase products that you want to use
+    // https://firebase.google.com/docs/web/setup#available-libraries
+
+    // Your web app's Firebase configuration
+    // For Firebase JS SDK v7.20.0 and later, measurementId is optional
+    const firebaseConfig = {
+        apiKey: "AIzaSyAcxc0ZwB7gSpRe-Sflk_tMBFmeFsobdzI",
+        authDomain: "busconnect-9bcbe.firebaseapp.com",
+        projectId: "busconnect-9bcbe",
+        storageBucket: "busconnect-9bcbe.firebasestorage.app",
+        messagingSenderId: "775438696273",
+        appId: "1:775438696273:web:335618c4688b13247f9d70",
+        measurementId: "G-G3T6BTTSYG"
+    };
+
+    // Initialize Firebase
+    const app = initializeApp(firebaseConfig);
+    const analytics = getAnalytics(app);
+    </script>
 </body>
 </html> 
