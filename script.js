@@ -1,20 +1,18 @@
 // Mobile Navigation Toggle
-const hamburger = document.querySelector('.hamburger');
-const navLinks = document.querySelector('.nav-links');
-if (hamburger && navLinks) {
-    hamburger.addEventListener('click', () => {
-        navLinks.classList.toggle('active');
-        hamburger.classList.toggle('active');
-    });
-
-    // Close mobile menu when clicking outside
-    document.addEventListener('click', (e) => {
-        if (!hamburger.contains(e.target) && !navLinks.contains(e.target)) {
-            navLinks.classList.remove('active');
-            hamburger.classList.remove('active');
-        }
-    });
-}
+// const hamburger = document.querySelector('.hamburger');
+// const navLinks = document.querySelector('.nav-links');
+// if (hamburger && navLinks) {
+//     hamburger.addEventListener('click', () => {
+//         navLinks.classList.toggle('active');
+//         hamburger.classList.toggle('active');
+//     });
+//     document.addEventListener('click', (e) => {
+//         if (!hamburger.contains(e.target) && !navLinks.contains(e.target)) {
+//             navLinks.classList.remove('active');
+//             hamburger.classList.remove('active');
+//         }
+//     });
+// }
 
 // Enhanced Contact Form Interactivity and Validation
 const contactForm = document.getElementById('contact-form');
@@ -257,8 +255,30 @@ style.textContent = `
 document.head.appendChild(style);
 
 document.addEventListener('DOMContentLoaded', function () {
-    // Sidebar Collapse/Expand
     const sidebar = document.querySelector('.sidebar');
+    const hamburgerBtn = document.getElementById('hamburgerBtn');
+
+    if (hamburgerBtn && sidebar) {
+        hamburgerBtn.addEventListener('click', function (e) {
+            e.stopPropagation();
+            sidebar.classList.toggle('active');
+            hamburgerBtn.classList.toggle('active');
+        });
+
+        // Close sidebar when clicking outside
+        document.addEventListener('click', function (e) {
+            if (
+                sidebar.classList.contains('active') &&
+                !sidebar.contains(e.target) &&
+                e.target !== hamburgerBtn
+            ) {
+                sidebar.classList.remove('active');
+                hamburgerBtn.classList.remove('active');
+            }
+        });
+    }
+
+    // Sidebar Collapse/Expand
     const collapseBtn = document.getElementById('collapseSidebar');
     const mainContent = document.querySelector('.main-content');
 
